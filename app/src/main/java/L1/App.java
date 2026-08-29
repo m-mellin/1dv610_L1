@@ -10,7 +10,7 @@ public class App {
 
         System.out.print("Hello, what is your name? ");
 
-        String value = input.nextLine().toUpperCase();
+        String value = input.nextLine();
 
         String[][] letters = new String[value.length()][];
 
