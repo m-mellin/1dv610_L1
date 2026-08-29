@@ -1,5 +1,12 @@
 package L1;
 
+/**
+* Provides ASCII character representations using text-based art.
+* The class contains predefined representations for uppercase and lowercase
+* letters as well as the space character. 
+* 
+* @author Mattias Mellin <mm225vh@student.lnu.se> <mattias.mellin@gmail.com>
+*/
 public class AsciiAlphabet {
 
   // Number of lines each letter is rendered with.
@@ -86,7 +93,7 @@ public class AsciiAlphabet {
    * @param ascii the ASCII code of the character
    * @return the raw character representation
    */
-  public static String[] getRawLetter(int ascii) {
+  private static String[] getRawLetter(int ascii) {
 
     switch (ascii) {
       case 32:

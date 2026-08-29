@@ -2,10 +2,20 @@ package L1;
 
 import java.util.Scanner;
 
+/**
+ * Creates an ASCII art of the users name and prints it out.
+ * 
+ * @author Mattias Mellin <mm225vh@student.lnu.se> <mattias.mellin@gmail.com>
+ */
 public class App {
 
     private static Scanner input = new Scanner(System.in, "UTF-8");
 
+    /**
+     * Main method to run the application.
+     *
+     * @param args Command line arguments - not used.
+     */
     public static void main(String[] args) {
 
         System.out.print("Hello, what is your name? ");
