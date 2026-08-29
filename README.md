@@ -37,9 +37,10 @@ For example:
 * `B` → ASCII `66`
 * `a` → ASCII `97`
 * `b` → ASCII `98`
-* Space → ASCII `32`
 
 Each character is normalized so that it can be displayed correctly alongside other characters.
+
+If a character is not available they will be represented by a blank slot.
 
 ## Project structure
 
