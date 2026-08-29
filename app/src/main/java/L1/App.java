@@ -1,6 +1,7 @@
 package L1;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * Creates an ASCII art of the users name and prints it out.
@@ -11,6 +12,8 @@ public class App {
 
     private static Scanner input = new Scanner(System.in, "UTF-8");
 
+    private static String welcomeMessage = "Welcome back";
+
     /**
      * Main method to run the application.
      *
@@ -19,24 +22,31 @@ public class App {
     public static void main(String[] args) {
 
         System.out.print("Hello, what is your name? ");
+        String userInput = input.nextLine();
 
-        String value = input.nextLine();
+        ArrayList<String> values = new ArrayList<>();
+        values.add(welcomeMessage);
+        values.add(userInput);
 
-        String[][] letters = new String[value.length()][];
+        for (String value : values) {
 
-        for (int i = 0; i < value.length(); i++) {
-            letters[i] = AsciiAlphabet.getLetter(value.charAt(i));
-        }
-        
-        for (int row = 0; row < AsciiAlphabet.LETTER_HEIGHT; row++) {
+          String[][] letters = new String[value.length()][];
 
-          StringBuilder line = new StringBuilder();
+          for (int i = 0; i < value.length(); i++) {
+              letters[i] = AsciiAlphabet.getLetter(value.charAt(i));
+          }
+          
+          for (int row = 0; row < AsciiAlphabet.LETTER_HEIGHT; row++) {
 
-          for (String[] letter : letters) {
-            line.append(letter[row]).append("  ");
+            StringBuilder line = new StringBuilder();
+
+            for (String[] letter : letters) {
+              line.append(letter[row]).append("  ");
+            }
+
+            System.out.println(line.toString());
           }
 
-          System.out.println(line.toString());
         }
     }
 }
