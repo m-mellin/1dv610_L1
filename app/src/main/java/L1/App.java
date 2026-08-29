@@ -17,12 +17,16 @@ public class App {
         for (int i = 0; i < value.length(); i++) {
             letters[i] = AsciiAlphabet.getLetter(value.charAt(i));
         }
+        
+        for (int row = 0; row < AsciiAlphabet.LETTER_HEIGHT; row++) {
 
-        for (int row = 0; row < 8; row++) {
-            for (int letter = 0; letter < letters.length; letter++) {
-                System.out.printf("%-15s", letters[letter][row]);
-            }
-            System.out.println();
+          StringBuilder line = new StringBuilder();
+
+          for (String[] letter : letters) {
+            line.append(letter[row]).append("  ");
+          }
+
+          System.out.println(line.toString());
         }
     }
 }

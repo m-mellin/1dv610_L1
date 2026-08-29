@@ -2,7 +2,91 @@ package L1;
 
 public class AsciiAlphabet {
 
+  // Number of lines each letter is rendered with.
+  public static final int LETTER_HEIGHT = 11;
+
+  // Minimum width used when normalizing letters.
+  public static final int BLANK_WIDTH = 6;
+
+
+  /**
+  * Gets a letter based on its ASCII code and normalizes it.
+  *
+  * @param ascii the ASCII code of the letter
+  * @return the normalized letter
+  */
   public static String[] getLetter(int ascii) {
+
+      String[] letter = getRawLetter(ascii);
+
+      return normalize(letter);
+  }
+
+
+  /**
+   * Normalizes a letter to the required height and width.
+   * Missing rows are filled with spaces, and shorter rows
+   * are padded to match the widest row.
+   *
+   * @param letter the raw letter
+   * @return the normalized letter
+   */
+  private static String[] normalize(String[] letter) {
+
+      int width = BLANK_WIDTH;
+
+      // Check each row in the letter.
+      for (String line : letter) {
+
+        // Use the longest row as the required width.
+          if (line.length() > width) {
+              width = line.length();
+          }
+      }
+
+      // Create a new array with the correct height.
+      String[] result = new String[LETTER_HEIGHT];
+
+      for (int row = 0; row < LETTER_HEIGHT; row++) {
+
+          String line = "";
+
+          // Get the current row if it exists.
+          if (row < letter.length) {
+              line = letter[row];
+          }
+
+          // Add spaces to the end of the row until it reaches the required width.
+          result[row] = padRight(line, width);
+      }
+
+      return result;
+  }
+
+  /**
+   * Adds spaces to the end of a string until it reaches the given width.
+   *
+   * @param newString the string to pad
+   * @param width the required width
+   * @return the padded string
+   */
+  private static String padRight(String string, int width) {
+    StringBuilder newString = new StringBuilder(string);
+
+    while (newString.length() < width) {
+      newString.append(' ');
+    }
+
+    return newString.toString();
+  }
+
+  /**
+   * Returns the raw ASCII representation for the given ASCII code.
+   *
+   * @param ascii the ASCII code of the character
+   * @return the raw character representation
+   */
+  public static String[] getRawLetter(int ascii) {
 
     switch (ascii) {
       case 32:
